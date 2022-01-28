@@ -1,30 +1,15 @@
 import React from "react";
-import Vehicles from "./subcontent/vehicles/Vehicles";
-import Species from "./subcontent/species/Species";
-import Planets from "./subcontent/planets/Planets";
-import Films from "./subcontent/films/Films";
-import People from "./subcontent/people/People";
-import Starships from "./subcontent/starships/Starships";
 import Welcome from "./subcontent/Welcome";
+import { useData } from "./Context/DataContext";
+import ShowContent from "./subcontent/ShowContent";
 
-const Content = ({ type, URL, setType }) => {
-  switch (type) {
-    case "welcome":
-      return <Welcome setType={setType} />;
-    case "people":
-      return <People url={URL} type={type} />;
-    case "planets":
-      return <Planets url={URL} type={type} />;
-    case "starships":
-      return <Starships url={URL} type={type} />;
-    case "species":
-      return <Species url={URL} type={type} />;
-    case "vehicles":
-      return <Vehicles url={URL} type={type} />;
-    case "films":
-      return <Films url={URL} type={type} />;
-    default:
-      return <Welcome setType={setType} />;
+const Content = () => {
+  const { type } = useData();
+
+  if (type === "welcome") {
+    return <Welcome />;
   }
+
+  return <ShowContent />;
 };
 export default Content;

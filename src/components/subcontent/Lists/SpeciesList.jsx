@@ -4,7 +4,9 @@ import ListItem from "../../../UI/ListItem";
 import ListWrapper from "../../../UI/ListWrapper";
 import NavBtn from "../../../UI/NavBtn";
 import TitleText from "../../../UI/TitleText";
-const SpeciesList = ({ data, setUrl }) => {
+import { useData } from "../../Context/DataContext";
+const SpeciesList = () => {
+  const { data, setURL } = useData();
   return (
     <>
     <ListWrapper>
@@ -22,7 +24,7 @@ const SpeciesList = ({ data, setUrl }) => {
           </ListItem>
         ))}
         </ListWrapper>
-        <NavBtn setUrl={setUrl} data={data}/>
+        <NavBtn setUrl={setURL} data={data}/>
     </>
   );
 };

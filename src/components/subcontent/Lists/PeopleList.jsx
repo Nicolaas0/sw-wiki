@@ -4,13 +4,15 @@ import ListItem from "../../../UI/ListItem";
 import NavBtn from "../../../UI/NavBtn";
 import TitleText from "../../../UI/TitleText";
 import DescText from "../../../UI/DescText";
-const PeopleList = ({ data, setUrl }) => {
+import { useData } from "../../Context/DataContext";
+const PeopleList = () => {
+  const { data, setURL } = useData();
   return (
     <>
-    <ListWrapper>
-      {data &&
-        data.results.map((d,i) => (
-              <ListItem key={i}>
+      <ListWrapper>
+        {data &&
+          data.results.map((d, i) => (
+            <ListItem key={i}>
               <TitleText>{d.name}</TitleText>
               <DescText>Born: {d.birth_year}</DescText>
               <DescText>Eye Color: {d.eye_color}</DescText>
@@ -19,10 +21,10 @@ const PeopleList = ({ data, setUrl }) => {
               <DescText>Mass: {d.mass}</DescText>
               <DescText>Hair Color: {d.hair_color}</DescText>
               <DescText>Skin Color: {d.skin_color}</DescText>
-              </ListItem>
-        ))}
-        </ListWrapper>
-        <NavBtn setUrl={setUrl} data={data}/>
+            </ListItem>
+          ))}
+      </ListWrapper>
+      <NavBtn setUrl={setURL} data={data} />
     </>
   );
 };
