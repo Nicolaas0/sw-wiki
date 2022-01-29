@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ListWrapper from "../../../UI/ListWrapper";
 import ListItem from "../../../UI/ListItem";
 import NavBtn from "../../../UI/NavBtn";
 import DescText from "../../../UI/DescText";
 import TitleText from "../../../UI/TitleText";
-import { useData } from "../../Context/DataContext";
+import FetchData from "../../../FetchData";
 const PlanetList = () => {
-  const { data, setURL } = useData();
+  const [url, setURL] = useState("https://swapi.dev/api/planets");
+
+  const { data } = FetchData(url);
   return (
     <>
       <ListWrapper>

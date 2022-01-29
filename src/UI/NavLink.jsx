@@ -1,12 +1,7 @@
 import { Link } from "@chakra-ui/react";
+import { Link as RouteLink } from "react-router-dom";
 
-const Links = ({ children, url, setType, setURL, setData}) => {
-  const onClickHandler = (URL) => {
-    setData(null);
-    setType(URL.slice(22));
-    setURL(URL);
-  };
-
+const Links = ({ children, p }) => {
   const style = {
     fontFamily: "overpass",
     my: 3,
@@ -17,8 +12,8 @@ const Links = ({ children, url, setType, setURL, setData}) => {
     color: "yellow",
   };
   return (
-    <Link {...style} onClick={() => {onClickHandler(url);}}>
-      {children}
+    <Link {...style}>
+      <RouteLink to={`/${p}`}>{children}</RouteLink>
     </Link>
   );
 };

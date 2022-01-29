@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ListWrapper from "../../../UI/ListWrapper";
 import ListItem from "../../../UI/ListItem";
 import NavBtn from "../../../UI/NavBtn";
 import TitleText from "../../../UI/TitleText";
 import DescText from "../../../UI/DescText";
-import { useData } from "../../Context/DataContext";
+import FetchData from "../../../FetchData";
 const PeopleList = () => {
-  const { data, setURL } = useData();
+  const [url, setURL] = useState("https://swapi.dev/api/people");
+
+  const { data } = FetchData(url);
+
   return (
     <>
       <ListWrapper>
